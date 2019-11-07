@@ -25,6 +25,7 @@ namespace OpClipBoardCsharpForm
         webtrans webAPI = new webtrans();
         Thread thread1 = new Thread(myStaticThreadMethod);
         int cnt = 0;
+        Inifile inifile;
         public static void myStaticThreadMethod()
         {
             int i = 0;
@@ -40,8 +41,18 @@ namespace OpClipBoardCsharpForm
         public Form1()
         {
             InitializeComponent();
+            this.richTextBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseWheel);
             this.webBrowser1.Url = new Uri("http://fanyi.youdao.com");
             this.TopMost = true;
+            inifile = new Inifile(Application.StartupPath + @"\OpClipBoardCsharpFormConfig.INI");
+            try
+            {
+               richTextBox1.ZoomFactor = float.Parse(inifile.IniReadValue("Lib", "FontSize"));
+            }
+            catch
+            {
+                ;
+            }
             if (runingflg)
             {
                 timer1.Start();
@@ -61,7 +72,25 @@ namespace OpClipBoardCsharpForm
                 button2.Text = "置顶";
             }
         }
+        public void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
 
+
+            if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+            {
+             //   richTextBox1.Text = richTextBox1.ZoomFactor.ToString();
+                inifile.IniWriteValue("Lib", "FontSize", (richTextBox1.ZoomFactor).ToString());
+                //     e.Delta.ToString();
+            }
+            //if (e.Delta > 0)
+            //    addsd -= 0.1f;
+            //else
+            //    addsd += 0.1f;
+            //if (addsd >= 3)
+            //    addsd = 3;
+            //if (addsd <= 1)
+            //    addsd = 1f;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
