@@ -52,6 +52,14 @@ namespace OpClipBoardCsharpForm
                     tmpst[i] = "";
                 }
             }
+            if (this.TopMost)
+            {
+                button2.Text = "取消置顶";
+            }
+            else
+            {
+                button2.Text = "置顶";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -113,8 +121,10 @@ namespace OpClipBoardCsharpForm
         {
             this.Visible = true;
             this.WindowState = FormWindowState.Normal;
-
-          //   this.notifyIcon1.Visible = false;
+            this.TopMost = true;
+            this.TopMost = false;
+            //  this.TopLevel = true;
+            //   this.notifyIcon1.Visible = false;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -283,7 +293,14 @@ namespace OpClipBoardCsharpForm
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = tmpst[0];
+            this.TopMost = !this.TopMost;
+            if (this.TopMost)
+            {
+                button2.Text = "取消置顶";
+            }
+            else {
+                button2.Text = "置顶";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
