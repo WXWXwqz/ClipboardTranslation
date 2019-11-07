@@ -1,0 +1,13 @@
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.exe.config
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.exe
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.pdb
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csprojAssemblyReference.cache
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.Form1.resources
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.Properties.Resources.resources
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.GenerateResource.cache
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.CoreCompileInputs.cache
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.exe
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.pdb
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\Newtonsoft.Json.dll
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\Newtonsoft.Json.xml
+C:\Users\wqz\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.CopyComplete
