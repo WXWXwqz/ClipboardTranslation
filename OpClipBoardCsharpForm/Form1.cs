@@ -219,6 +219,15 @@ namespace OpClipBoardCsharpForm
             }
            return new string(ttt);
         }
+        private bool isTextEnglish(string instr)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (instr[i] > 128)
+                    return false;
+            }
+            return true;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             cnt++;
@@ -264,7 +273,8 @@ namespace OpClipBoardCsharpForm
                             if (auto)
                             {
                                 tmp_last = tmp;
-                                if (tmp[0] <= 'z' && tmp[0] >= 'A'||(tmp[0] == ' '&&tmp[1] <= 'z' && tmp[1] >= 'A'))
+                                //if (tmp[0] <= 128 && tmp[0] >= 0 ||(tmp[0] == ' '&&tmp[1] <= 'z' && tmp[1] >= 'A'))
+                                if(isTextEnglish(tmp))
                                 {
                                     if (tmp[0] <= 'z' && tmp[0] >= 'a')
                                     {
