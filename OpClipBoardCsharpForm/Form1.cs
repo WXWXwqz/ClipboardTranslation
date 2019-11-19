@@ -48,6 +48,7 @@ namespace OpClipBoardCsharpForm
             try
             {
                richTextBox1.ZoomFactor = float.Parse(inifile.IniReadValue("Lib", "FontSize"));
+               langues = int.Parse(inifile.IniReadValue("Lib", "langues"));
             }
             catch
             {
@@ -71,6 +72,13 @@ namespace OpClipBoardCsharpForm
             {
                 button2.Text = "置顶";
             }
+            switch (langues)
+            {
+                case 0: button3.Text = "语言:英->汉"; break;
+                case 1: button3.Text = "语言:汉->英"; break;
+                case 2: button3.Text = "语言:自  动"; break;
+            }
+
         }
         public void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -111,11 +119,18 @@ namespace OpClipBoardCsharpForm
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Visible = true;
+                this.WindowState = FormWindowState.Normal;
+                this.TopMost = true;
+                this.TopMost = false;
+            }
             //this.Visible = true;
 
             //this.WindowState = FormWindowState.Normal;
 
-           // this.notifyIcon1.Visible = false;
+            // this.notifyIcon1.Visible = false;
         }
 
         private void 开始ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,11 +234,41 @@ namespace OpClipBoardCsharpForm
             }
            return new string(ttt);
         }
+        private bool isTrans(string instr)
+        {
+            if (langues == 2) //英汉
+            {
+                return true;
+            }
+            if (isTextEnglish(instr))
+            {
+                if (langues == 0) //英汉
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (langues == 0) //英汉
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+           // return true;
+        }
         private bool isTextEnglish(string instr)
         {
             for (int i = 0; i < 10; i++)
             {
-                if (instr[i] > 128)
+                if (instr[i] >= 0x4e00 && instr[i] <= 0x9fbb)
                     return false;
             }
             return true;
@@ -243,7 +288,7 @@ namespace OpClipBoardCsharpForm
                         {
                             if (richTextBox1.Text.Length != 0)
                                 richTextBox1.Text += "\r\n    ";
-                            else
+                            else if(Clipboard.ContainsText())
                                 richTextBox1.Text += "    ";
                         }
                         richTextBox1.Text += (richtmp.Replace("\r\n\r\n", "\r\n")).Replace("\r\n\r\n", "\r\n").Replace("\r\n", "\r\n    ");
@@ -274,7 +319,7 @@ namespace OpClipBoardCsharpForm
                             {
                                 tmp_last = tmp;
                                 //if (tmp[0] <= 128 && tmp[0] >= 0 ||(tmp[0] == ' '&&tmp[1] <= 'z' && tmp[1] >= 'A'))
-                                if(isTextEnglish(tmp))
+                                if(isTrans(tmp))
                                 {
                                     if (tmp[0] <= 'z' && tmp[0] >= 'a')
                                     {
@@ -341,10 +386,19 @@ namespace OpClipBoardCsharpForm
                 button2.Text = "置顶";
             }
         }
-
+        int langues=0;
         private void button3_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = tmpst[1];
+            // richTextBox1.Text = tmpst[1];
+            langues++;
+            langues = langues % 3;
+            switch (langues)
+            {
+                case 0: button3.Text = "语言:英->汉"; break;
+                case 1: button3.Text = "语言:汉->英"; break;
+                case 2: button3.Text = "语言:自  动"; break;
+            }
+            inifile.IniWriteValue("Lib", "langues", langues.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -385,6 +439,11 @@ namespace OpClipBoardCsharpForm
         private void RichTextBox1_DoubleClick(object sender, EventArgs e)
         {
             richTextBox1.Text = "";
+            richtmp = "";
+            tmp_last = "";
+            GetWebAPIResult("");
+            // OutWords.OuterText = "";
+            Clipboard.Clear();
         }
     }
 }
