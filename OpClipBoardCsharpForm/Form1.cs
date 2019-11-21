@@ -26,6 +26,9 @@ namespace OpClipBoardCsharpForm
         Thread thread1 = new Thread(myStaticThreadMethod);
         int cnt = 0;
         Inifile inifile;
+        string englishstr;
+        int Flag_contrast;
+         
         public static void myStaticThreadMethod()
         {
             int i = 0;
@@ -42,13 +45,17 @@ namespace OpClipBoardCsharpForm
         {
             InitializeComponent();
             this.richTextBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseWheel);
+            this.richTextBox2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.richTextBox2_MouseWheel);
+
             this.webBrowser1.Url = new Uri("http://fanyi.youdao.com");
             this.TopMost = true;
             inifile = new Inifile(Application.StartupPath + @"\OpClipBoardCsharpFormConfig.INI");
             try
             {
                richTextBox1.ZoomFactor = float.Parse(inifile.IniReadValue("Lib", "FontSize"));
+               richTextBox2.ZoomFactor = float.Parse(inifile.IniReadValue("Lib", "EnglishFontSize"));
                langues = int.Parse(inifile.IniReadValue("Lib", "langues"));
+               Flag_contrast = int.Parse(inifile.IniReadValue("Lib", "Flag_contrast"));
             }
             catch
             {
@@ -66,11 +73,11 @@ namespace OpClipBoardCsharpForm
             }
             if (this.TopMost)
             {
-                button2.Text = "取消置顶";
+                button2.Text = "Untop";
             }
             else
             {
-                button2.Text = "置顶";
+                button2.Text = "Top";
             }
             switch (langues)
             {
@@ -78,6 +85,18 @@ namespace OpClipBoardCsharpForm
                 case 1: button3.Text = "语言:汉->英"; break;
                 case 2: button3.Text = "语言:自  动"; break;
             }
+            if (Flag_contrast == 0)
+            {
+                button4.Text = "对照:Off";
+            }
+            else
+            {
+                button4.Text = "对照:On";
+            }
+            Check_contrastSize();
+        }
+        public void richTextBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
 
         }
         public void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
@@ -108,6 +127,28 @@ namespace OpClipBoardCsharpForm
         {
 
         }
+        void Check_contrastSize()
+        {
+            if (Flag_contrast == 1)
+            {
+                richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+                richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom))));
+                richTextBox1.Width = (this.Size.Width - 25) / 2;
+                richTextBox2.Width = (this.Size.Width - 25) / 2;
+                richTextBox2.Height = richTextBox1.Height;
+                richTextBox2.Location = new Point(richTextBox1.Width + 5, richTextBox2.Location.Y);
+            }
+            else
+            {
+                richTextBox1.Anchor= ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+              //  richTextBox2.Enabled = true;
+                richTextBox2.Width = 0;
+                richTextBox2.Height = 0;
+                richTextBox1.Width = (this.Size.Width - 20);
+            }
+        }
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -115,6 +156,8 @@ namespace OpClipBoardCsharpForm
               //  this.Hide();
                 this.notifyIcon1.Visible = true;
             }
+            Check_contrastSize();
+         //   richTextBox2.Text = richTextBox1.Text;
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -287,14 +330,21 @@ namespace OpClipBoardCsharpForm
                         if (!addflag)
                         {
                             if (richTextBox1.Text.Length != 0)
-                                richTextBox1.Text += "\r\n    ";
-                            else if(Clipboard.ContainsText())
-                                richTextBox1.Text += "    ";
+                            {richTextBox2.Text += "\r\n    ";
+                                richTextBox1.Text += "\r\n    ";                                
+                            }
+                            else if (Clipboard.ContainsText())
+                            {
+                                richTextBox2.Text += "    ";
+                                 richTextBox1.Text += "    ";
+                            }
                         }
-                        richTextBox1.Text += (richtmp.Replace("\r\n\r\n", "\r\n")).Replace("\r\n\r\n", "\r\n").Replace("\r\n", "\r\n    ");
+                         richTextBox2.Text += englishstr;
+                         richTextBox1.Text += (richtmp.Replace("\r\n\r\n", "\r\n")).Replace("\r\n\r\n", "\r\n").Replace("\r\n", "\r\n    ");
                     }
                     else
                     {
+                        richTextBox2.Text = englishstr;
                         richTextBox1.Text = (richtmp.Replace("\r\n\r\n", "\r\n")).Replace("\r\n\r\n", "\r\n").Replace("\r\n", "\r\n    ");
                     }
                     
@@ -334,12 +384,12 @@ namespace OpClipBoardCsharpForm
                                     tmp = tmp.Replace(".\r\n", "%￥#");
                                     tmp = tmp.Replace("\r\n", " ");
                                     tmp = tmp.Replace("%￥#", ".\r\n");
-                                    
+                                    englishstr = tmp;
                                    // Clipboard.SetText(tmp);
                                     //Clipboard.SetText("test");    
                                     GetWebAPIResult(tmp);
                                     //richTextBox1.Text = OutWords.OuterText;//
-                                    tmpstrenew(tmp);
+                                //    tmpstrenew(tmp);
                                 }
                             }
                             else
@@ -380,10 +430,10 @@ namespace OpClipBoardCsharpForm
             this.TopMost = !this.TopMost;
             if (this.TopMost)
             {
-                button2.Text = "取消置顶";
+                button2.Text = "Untop";
             }
             else {
-                button2.Text = "置顶";
+                button2.Text = "Top";
             }
         }
         int langues=0;
@@ -403,7 +453,21 @@ namespace OpClipBoardCsharpForm
 
         private void button4_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = tmpst[2];
+            //richTextBox1.Text = tmpst[2];
+            
+
+            if (Flag_contrast == 0)
+            {
+                Flag_contrast = 1;
+                button4.Text = "对照:On";
+            }
+            else
+            {
+                Flag_contrast = 0;
+                button4.Text = "对照:Off";
+            }
+            inifile.IniWriteValue("Lib", "Flag_contrast", Flag_contrast.ToString());
+            Check_contrastSize();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -439,6 +503,8 @@ namespace OpClipBoardCsharpForm
         private void RichTextBox1_DoubleClick(object sender, EventArgs e)
         {
             richTextBox1.Text = "";
+            richTextBox2.Text = "";
+            englishstr = "";
             richtmp = "";
             tmp_last = "";
             GetWebAPIResult("");
