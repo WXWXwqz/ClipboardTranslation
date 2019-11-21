@@ -159,7 +159,7 @@
             this.button7.TabIndex = 10;
             this.button7.Text = "Clean";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            this.button7.Click += new System.EventHandler(this.RichTextBox1_DoubleClick);
             // 
             // button2
             // 
