@@ -97,7 +97,7 @@ namespace OpClipBoardCsharpForm
         }
         public void richTextBox2_MouseWheel(object sender, MouseEventArgs e)
         {
-
+            inifile.IniWriteValue("Lib", "EnglishFontSize", (richTextBox2.ZoomFactor).ToString());
         }
         public void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -384,7 +384,7 @@ namespace OpClipBoardCsharpForm
                                     tmp = tmp.Replace(".\r\n", "%￥#");
                                     tmp = tmp.Replace("\r\n", " ");
                                     tmp = tmp.Replace("%￥#", ".\r\n");
-                                    englishstr = tmp;
+                                    englishstr = tmp.Replace("’", "'"); ;
                                    // Clipboard.SetText(tmp);
                                     //Clipboard.SetText("test");    
                                     GetWebAPIResult(tmp);
