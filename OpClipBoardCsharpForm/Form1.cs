@@ -146,6 +146,7 @@ namespace OpClipBoardCsharpForm
               //  richTextBox2.Enabled = true;
                 richTextBox2.Width = 0;
                 richTextBox2.Height = 0;
+                richTextBox1.Height = this.Size.Height - 81;
                 richTextBox1.Width = (this.Size.Width - 20);
             }
         }
