@@ -136,7 +136,7 @@ namespace OpClipBoardCsharpForm
                 richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom))));
                 richTextBox1.Width = (this.Size.Width - 25) / 2;
                 richTextBox2.Width = (this.Size.Width - 25) / 2;
-                richTextBox2.Height = richTextBox1.Height;
+                richTextBox2.Height = richTextBox1.Height= this.Size.Height-81;
                 richTextBox2.Location = new Point(richTextBox1.Width + 5, richTextBox2.Location.Y);
             }
             else
@@ -210,6 +210,8 @@ namespace OpClipBoardCsharpForm
             this.WindowState = FormWindowState.Normal;
             this.TopMost = true;
             this.TopMost = false;
+            Check_contrastSize();
+
             //  this.TopLevel = true;
             //   this.notifyIcon1.Visible = false;
         }
