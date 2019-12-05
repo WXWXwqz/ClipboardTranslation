@@ -48,6 +48,9 @@ namespace OpClipBoardCsharpForm
             this.richTextBox2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.richTextBox2_MouseWheel);
 
             this.webBrowser1.Url = new Uri("http://fanyi.youdao.com");
+          //  this.webBrowser1.Url = new Uri("http://www.baidu.com");
+            this.webBrowser1.Height = 0;
+            this.webBrowser1.Width = 0;
             this.TopMost = true;
             inifile = new Inifile(Application.StartupPath + @"\OpClipBoardCsharpFormConfig.INI");
             try
@@ -419,7 +422,17 @@ namespace OpClipBoardCsharpForm
         {
            // cnt = 0;
             HtmlElement transWords = webBrowser1.Document.All["inputOriginal"];
-            transWords.SetAttribute("value", input);//给百度搜索的文本框赋值
+            if (transWords == null)
+            {
+                this.webBrowser1.Refresh();
+                transWords = webBrowser1.Document.All["inputOriginal"];
+            }
+            if (transWords == null)
+            {
+                MessageBox.Show("无法访问网络");
+                return "";
+            }
+            transWords.SetAttribute("value", input);
             HtmlElement searchButton = webBrowser1.Document.All["transMachine"];//获取百度搜索的按钮//ms_id1
             searchButton.InvokeMember("click");
            // while (cnt < 3) ;
@@ -512,7 +525,8 @@ namespace OpClipBoardCsharpForm
             tmp_last = "";
             GetWebAPIResult("");
             // OutWords.OuterText = "";
-            Clipboard.Clear();
+            if(Clipboard.ContainsText())
+                Clipboard.Clear();
         }
     }
 }
