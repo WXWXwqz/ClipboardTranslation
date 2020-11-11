@@ -24,3 +24,16 @@ C:\Users\LQ\source\repos\ClipboardTranslation\OpClipBoardCsharpForm\obj\Debug\Op
 C:\Users\LQ\source\repos\ClipboardTranslation\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.CopyComplete
 C:\Users\LQ\source\repos\ClipboardTranslation\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.exe
 C:\Users\LQ\source\repos\ClipboardTranslation\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.pdb
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.exe.config
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.exe
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csprojAssemblyReference.cache
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.Form1.resources
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.Properties.Resources.resources
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.GenerateResource.cache
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.CoreCompileInputs.cache
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.csproj.CopyComplete
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.exe
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\obj\Debug\OpClipBoardCsharpForm.pdb
+C:\Users\gggad\Documents\Visual Studio 2017\Projects\OpClipBoardCsharpForm\OpClipBoardCsharpForm\bin\Debug\OpClipBoardCsharpForm.pdb

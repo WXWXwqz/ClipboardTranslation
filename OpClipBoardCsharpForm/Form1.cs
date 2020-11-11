@@ -390,6 +390,7 @@ namespace OpClipBoardCsharpForm
                                     tmp = tmp.Replace(".\r\n", "%￥#");
                                     tmp = tmp.Replace("\r\n", " ");
                                     tmp = tmp.Replace("%￥#", ".\r\n");
+                                    tmp = tmp.Replace("\u0002", "");
                                     englishstr = tmp.Replace("’", "'"); ;
                                    // Clipboard.SetText(tmp);
                                     //Clipboard.SetText("test");    
